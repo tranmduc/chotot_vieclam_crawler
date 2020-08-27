@@ -51,7 +51,6 @@ class VieclamSpider(scrapy.Spider):
             yield Request(absolute_next_page_url, callback=self.parse)
 
     def parse_item(self, response):
-        # loader = MyItemLoader(selector=response)
         item = Vieclam()
         id = response.request.url.split('/')[-1].split('.')[0]
         title = response.xpath('//*[@id="__next"]/div/div[1]/div/div[3]/div[2]/div[1]/h1/text()').extract()[1]
